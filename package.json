@@ -1,0 +1,35 @@
+{
+  "name": "url_shortener_microservice",
+  "version": "1.0.0",
+  "description": "\"URL Shortener Microservice\" is a project required for freeCodeCamp Back End Development Certification.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charmedsatyr/url_shortener_microservice.git"
+  },
+  "keywords": [
+    "freeCodeCamp",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
+  "author": "CharmedSatyr",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/charmedsatyr/url_shortener_microservice/issues"
+  },
+  "homepage": "https://github.com/charmedsatyr/url_shortener_microservice#readme",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "expres": "0.0.5",
+    "express": "^4.15.2",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.25",
+    "mongodb-core": "^2.1.9",
+    "mu2": "^0.5.21"
+  }
+}
