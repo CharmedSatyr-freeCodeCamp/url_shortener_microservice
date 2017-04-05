@@ -81,7 +81,7 @@ mongo.connect(mongoLink, function(err, db) {
     });
 
     //Visit a short_url
-    app.route('/:url').get(function(req, res) {
+    app.route('/:url*').get(function(req, res) {
         //See if the :url is a short_url
         collection = db.collection('urls');
         collection.findOne({
