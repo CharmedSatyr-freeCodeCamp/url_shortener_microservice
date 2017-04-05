@@ -1,8 +1,8 @@
-#Environment
+# Environment
 .env
 
-#Database
-data/*
+# Database
+data
 
 # Logs
 logs
