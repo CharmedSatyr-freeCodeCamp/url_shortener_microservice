@@ -10,7 +10,6 @@ const express = require('express'),
     validate = require('url-validator'),
     mongoLink = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener-microservice',
     port = process.env.PORT || 8080;
-
 require('dotenv').config({silent: false});
 
 mu.root = path.join(__dirname + '/views');
@@ -25,7 +24,9 @@ let long_url,
 mongo.connect(mongoLink, function(err, db) {
     (err)
         ? console.error('Database failed to connect!')
-        : console.log('Connected to database on port 27017.')
+        : console.log('Connected to database on port', port)
+
+    console.log('connected on... ', mongoLink);
     //Create a collection
     db.createCollection('urls', {
         capped: true,
