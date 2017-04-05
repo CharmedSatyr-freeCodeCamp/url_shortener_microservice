@@ -1,53 +1,112 @@
+'use strict';
+
 const express = require('express'),
     app = express(),
+    router = express.Router(),
     mongo = require('mongodb').MongoClient,
+    path = require('path'),
     mu = require('mu2'),
     sha256 = require('crypto-js/sha256'),
-    url = 'mongodb://localhost:27017/url-shortener-microservice',
-    port = process.env.PORT || 5000;
+    validate = require('url-validator'),
+    mongoLink = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener-microservice',
+    port = process.env.PORT || 8080;
 
-mu.root = __dirname + '/public';
+require('dotenv').config({silent: false});
 
-app.get('/:url', function(req, res) {
-    mu.clearCache(); //This is helpful for Development to ensure changes are always reflected
+mu.root = path.join(__dirname + '/views');
 
-    //Long URL parameter
-    //Need to parse so that :// characters don't ruin everything
-    //Need to see if it matches an existing short_url
-    //If it matches an existing short_url, redirect to the associated long_url
-    let long_url = req.params.url;
-    //Shorten to 5 digits of the long parameter's hash
-    let short_url = (sha256(long_url)).toString().split('').slice(0, 5).join('');
+let long_url,
+    short_url,
+    visible,
+    stream,
+    fixed_lnk,
+    redirect_site;
 
-    let newUrl = {
-        long_url: long_url,
-        short_url: short_url
-    }
+mongo.connect(mongoLink, function(err, db) {
+    (err)
+        ? console.error('Database failed to connect!')
+        : console.log('Connected to database on port 27017.')
+    //Create a collection
+    db.createCollection('urls', {
+        capped: true,
+        size: 5242880,
+        max: 5000
+    });
+    const collection = db.collection('urls');
 
-    //Save long_url in the DB
-    //Save short_url in the DB associated with its long_url
-    //Navigating to short_url redirects user to long_url
+    //Display a static home page using mustache
+    app.get('/', function(req, res) {
+        mu.clearCache(); //This is helpful for Development to ensure changes are always reflected
+        visible = {
+            home: true,
+            links: false,
+            error: false,
+            long_url: long_url,
+            short_url: short_url
+        }
+        stream = mu.compileAndRender('index.html', visible);
+        stream.pipe(res);
+    });
 
-    let stream = mu.compileAndRender('index.html', newUrl);
+    //Create a new short_url
+    app.get('/new/:url*', function(req, res) {
+        mu.clearCache(); //This is helpful for Development to ensure changes are always reflected
+        fixed_lnk = validate(req.params.url + req.params[0]);
 
-    mongo.connect(url, function(err, db) {
-        if (err)
-            throw err;
+        if (fixed_lnk) {
+            long_url = fixed_lnk;
+            short_url = (sha256(fixed_lnk)).toString().split('').slice(0, 5).join('');
+        } else {
+            visible.error = true;
+        }
 
-        const collection = db.collection('urls');
-        collection.insert(newUrl, function(err, data) {
+        visible = {
+            home: false,
+            links: true,
+            error: false,
+            long_url: long_url,
+            short_url: short_url
+        }
+        stream = mu.compileAndRender('index.html', visible);
+        stream.pipe(res);
+        collection.insertOne(visible);
+        console.log('Inserted', JSON.stringify(visible));
+    });
+
+    //Visit a short_url
+    app.route('/:url').get(function(req, res) {
+        //See if the :url is a short_url
+        collection.findOne({
+            short_url: req.params.url
+        }, function(err, matches) {
+
             if (err)
                 throw err;
 
-            console.log(JSON.stringify(newUrl));
+            //Log whether there are any matches
+            if (matches) {
+                console.log('Match:', matches);
+                console.log('Redirecting to', matches.long_url);
+                res.redirect(matches.long_url);
+            } else {
+                mu.clearCache(); //This is helpful for Development to ensure changes are always reflected
+                visible = {
+                    home: false,
+                    links: false,
+                    error: true,
+                    long_url: long_url,
+                    short_url: short_url
+                }
+                stream = mu.compileAndRender('index.html', visible);
+                stream.pipe(res);
+                console.error('No matches');
+            }
             db.close();
-        })
-    })
+        });
 
-    stream.pipe(res);
+    });
 
-});
-
-app.listen(port, function() {
-    console.log('Listening on port', port);
+    app.listen(port, function() {
+        console.log('Listening on port', port);
+    });
 });
