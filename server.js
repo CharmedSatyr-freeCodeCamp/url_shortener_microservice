@@ -14,7 +14,8 @@ require('dotenv').config({silent: false});
 
 mu.root = path.join(__dirname + '/views');
 
-let long_url,
+let collection,
+    long_url,
     short_url,
     visible,
     stream,
@@ -33,7 +34,6 @@ mongo.connect(mongoLink, function(err, db) {
         size: 5242880,
         max: 5000
     });
-    const collection = db.collection('urls');
 
     //Display a static home page using mustache
     app.get('/', function(req, res) {
@@ -57,6 +57,13 @@ mongo.connect(mongoLink, function(err, db) {
         if (fixed_lnk) {
             long_url = fixed_lnk;
             short_url = (sha256(fixed_lnk)).toString().split('').slice(0, 5).join('');
+            visible = {
+                home: false,
+                links: true,
+                error: false,
+                long_url: long_url,
+                short_url: short_url
+            }
         } else {
             visible = {
                 home: false,
@@ -66,16 +73,9 @@ mongo.connect(mongoLink, function(err, db) {
                 short_url: short_url
             }
         }
-
-        visible = {
-            home: false,
-            links: true,
-            error: false,
-            long_url: long_url,
-            short_url: short_url
-        }
         stream = mu.compileAndRender('index.html', visible);
         stream.pipe(res);
+        collection = db.collection('urls');
         collection.insertOne(visible);
         console.log('Inserted', JSON.stringify(visible));
     });
@@ -83,6 +83,7 @@ mongo.connect(mongoLink, function(err, db) {
     //Visit a short_url
     app.route('/:url').get(function(req, res) {
         //See if the :url is a short_url
+        collection = db.collection('urls');
         collection.findOne({
             short_url: req.params.url
         }, function(err, matches) {
@@ -107,9 +108,7 @@ mongo.connect(mongoLink, function(err, db) {
                 stream = mu.compileAndRender('index.html', visible);
                 stream.pipe(res);
             }
-            db.close();
         });
-
     });
 
     app.listen(port, function() {
