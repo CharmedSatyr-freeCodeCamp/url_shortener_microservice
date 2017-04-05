@@ -58,12 +58,13 @@ mongo.connect(mongoLink, function(err, db) {
             long_url = fixed_lnk;
             short_url = (sha256(fixed_lnk)).toString().split('').slice(0, 5).join('');
         } else {
-          visible = {
-              home: false,
-              links: false,
-              error: true,
-              long_url: long_url,
-              short_url: short_url
+            visible = {
+                home: false,
+                links: false,
+                error: true,
+                long_url: long_url,
+                short_url: short_url
+            }
         }
 
         visible = {
