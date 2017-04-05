@@ -86,7 +86,6 @@ mongo.connect(mongoLink, function(err, db) {
         collection.findOne({
             short_url: req.params.url
         }, function(err, matches) {
-
             if (err)
                 throw err;
 
@@ -96,6 +95,7 @@ mongo.connect(mongoLink, function(err, db) {
                 console.log('Redirecting to', matches.long_url);
                 res.redirect(matches.long_url);
             } else {
+                console.error('No matches');
                 mu.clearCache(); //This is helpful for Development to ensure changes are always reflected
                 visible = {
                     home: false,
@@ -106,7 +106,6 @@ mongo.connect(mongoLink, function(err, db) {
                 }
                 stream = mu.compileAndRender('index.html', visible);
                 stream.pipe(res);
-                console.error('No matches');
             }
             db.close();
         });
