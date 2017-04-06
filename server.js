@@ -1,3 +1,4 @@
+
 'use strict';
 
 const express = require('express'),
@@ -10,7 +11,7 @@ const express = require('express'),
     validate = require('url-validator'),
     mongoLink = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener-microservice',
     port = process.env.PORT || 8080;
-require('dotenv');
+require('dotenv').config({silent: false});
 
 mu.root = path.join(__dirname + '/views');
 
