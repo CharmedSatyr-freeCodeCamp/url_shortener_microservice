@@ -54,7 +54,7 @@
                 outline: 5px auto -webkit-focus-ring-color;
                 outline-offset: -2px;
             }
-            
+
             button {
                 height: 3vh;
                 font-weight: 500;
@@ -87,6 +87,7 @@
             <section>
                 <h3>Paste a link into the box and click.</h3>
                 <input type='text' id='url_entry' name='url_entry'></input><button onclick="goToURL()">Shorten</button>
+                <br/>
                 <p>Be sure to include the full address, e.g., <code>https://www.example.com/</code>.
             </section>
             {{/home}} {{#links}}
@@ -109,7 +110,7 @@
             </section>
             {{/error}}
         </main>
-        <br/>
+
         <footer>
             <h4>You can view this project's source files on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub.</a></h4>
             <h6>*Some imagination may be required.</h6>
