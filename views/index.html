@@ -54,37 +54,59 @@
                 outline: 5px auto -webkit-focus-ring-color;
                 outline-offset: -2px;
             }
+
+            footer {
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                position: fixed;
+                right: 0;
+            }
         </style>
     </head>
 
     <body>
-        <h2>Charmed URLs</h2>
-        <h4>a URL Shortener Microservice*</h4>
-        <h4>by&#32;<a href="https://charmedsatyr.com">CharmedSatyr</a></h4>
-        <br/> {{#home}}
-        <h3>Directions</h3>
-        <p>To save a new address, add the full URL you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/new/</code>.</p>
-        <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
+        <header>
+            <h2>Charmed URLs</h2>
+            <h4>a URL Shortener Microservice*</h4>
+            <h4>by&#32;<a href="https://charmedsatyr.com">CharmedSatyr</a></h4>
+        </header>
         <br/>
-        <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
-        <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
-        <p>which will redirect to <code>https://example.com/</code>.</p> {{/home}} {{#links}}
-        <h3>Original URL</h3>
-        <div class='cblock'><code>{{long_url}}</code></div>
-        <h3>Shortened URL</h3>
-        <div class='cblock'>
-            <code>https://charmed-urls.herokuapp.com/{{short_url}}</code></div>
-        {{/links}} {{#error}}
-        <h3>Hmm... it looks like there's a problem.</h3>
-        <p>To save a new address, add the <strong>full</strong> URL (including <code>https://</code>) you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/<strong>new/</strong></code>.</p>
-        <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
+        <main> {{#home}}
+            <section>
+                <h3>Directions</h3>
+                <p>To save a new address, add the full URL you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/new/</code>.</p>
+                <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
+                <br/>
+                <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
+                <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
+                <p>which will redirect to <code>https://example.com/</code>.</p>
+            </section>
+            {{/home}} {{#links}}
+            <section>
+                <h3>Original URL</h3>
+                <div class='cblock'><code>{{long_url}}</code></div>
+                <h3>Shortened URL</h3>
+                <div class='cblock'>
+                    <code>https://charmed-urls.herokuapp.com/{{short_url}}</code>
+                </div>
+            </section>
+            {{/links}} {{#error}}
+            <section>
+                <h3>Hmm... it looks like there's a problem.</h3>
+                <p>To save a new address, add the <strong>full</strong> URL (including <code>https://</code>) you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/<strong>new/</strong></code>.</p>
+                <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
+                <br/>
+                <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
+                <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
+                <p>which will redirect to <code>https://example.com/</code>.</p>
+            </section> {{/error}}
+        </main>
         <br/>
-        <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
-        <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
-        <p>which will redirect to <code>https://example.com/</code>.</p> {{/error}}
-        <br/>
-        <h4>You can view this project's source files on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub.</a></h4>
-        <h6>*Some imagination may be required.</h6>
+        <footer>
+            <h4>You can view this project's source files on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub.</a></h4>
+            <h6>*Some imagination may be required.</h6>
+        </footer>
     </body>
 
 </html>
