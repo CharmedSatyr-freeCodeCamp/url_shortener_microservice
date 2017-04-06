@@ -55,6 +55,10 @@
                 outline-offset: -2px;
             }
 
+            button input {
+                height: 3vh;
+            }
+
             footer {
                 bottom: 0;
                 left: 0;
@@ -72,15 +76,12 @@
             <h4>by&#32;<a href="https://charmedsatyr.com">CharmedSatyr</a></h4>
         </header>
         <br/>
+        <br/>
         <main> {{#home}}
             <section>
-                <h3>Directions</h3>
-                <p>To save a new address, add the full URL you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/new/</code>.</p>
-                <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
-                <br/>
-                <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
-                <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
-                <p>which will redirect to <code>https://example.com/</code>.</p>
+                <h3>Paste a link into the box and click.</h3>
+                <input type='text' id='url_entry' name='url_entry'></input><button onclick="goToURL()">Shorten</button>
+                <p>Be sure to include the full address, e.g., <code>https://www.example.com/</code>.</p>
             </section>
             {{/home}} {{#links}}
             <section>
@@ -90,16 +91,15 @@
                 <div class='cblock'>
                     <code>https://charmed-urls.herokuapp.com/{{short_url}}</code>
                 </div>
+                <br/>
+                <a href='/'><button>shorten another link</button></a>
             </section>
             {{/links}} {{#error}}
             <section>
                 <h3>Hmm... it looks like there's a problem.</h3>
-                <p>To save a new address, add the <strong>full</strong> URL (including <code>https://</code>) you'd like shortened, e.g., <code>https://example.com/</code> to the end of <code>https://charmed-urls.herokuapp.com/<strong>new/</strong></code>.</p>
-                <p>A shortened URL that redirects to your original URL will appear on your screen.</p>
-                <br/>
-                <p>For example, <code>https://charmed-urls.herokuapp.com/new/https://example.com/</code></p>
-                <p>returns <code>https://charmed-urls.herokuapp.com/0f115/</code>,</p>
-                <p>which will redirect to <code>https://example.com/</code>.</p>
+                <input type='text' id='url_entry' name='url_entry'></input><button onclick="goToURL()">Shorten</button>
+                <p>To save a new address, type the <strong>full</strong> URL you'd like shortened (e.g., <code><strong>https://</strong>www.example.com/</code>) into the input box, and click the button!</p>
+                <p>A link will appear that redirects to the address you typed.</p>
             </section> {{/error}}
         </main>
         <br/>
@@ -107,6 +107,12 @@
             <h4>You can view this project's source files on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub.</a></h4>
             <h6>*Some imagination may be required.</h6>
         </footer>
+        <script>
+            function goToURL() {
+                let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
+                window.location = '/new/' + url_entry;
+            }
+        </script>
     </body>
 
 </html>
