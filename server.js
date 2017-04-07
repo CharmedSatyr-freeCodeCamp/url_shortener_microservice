@@ -38,9 +38,9 @@ mongo.connect(mongoLink, (err, db) => {
 
     //Create a collection
     db.createCollection('urls', {
-        capped: true,
-        size: 5242880,
-        max: 5000
+        capped: false//,/
+//        size: 5242880,
+  //      max: 5000
     });
     collection = db.collection('urls');
 
