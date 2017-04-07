@@ -43,7 +43,6 @@ mongo.connect(mongoLink, (err, db) => {
         max: 5000
     });
     collection = db.collection('urls');
-    collection.drop();
 
     //Display a static home page using mustache
     app.get('/', (req, res) => {
