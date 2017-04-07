@@ -1,4 +1,3 @@
-
 'use strict';
 
 const express = require('express'),
@@ -13,7 +12,9 @@ const express = require('express'),
     port = process.env.PORT || 8080;
 require('dotenv').config({silent: false});
 
+//Dynamic HTML generation and static CSS
 mu.root = path.join(__dirname + '/views');
+app.use(express.static(__dirname + '/views/style'));
 
 let collection,
     long_url,
@@ -28,7 +29,7 @@ mongo.connect(mongoLink, function(err, db) {
         ? console.error('Database failed to connect!')
         : console.log('Connected to database on port', port)
 
-    console.log('connected on... ', mongoLink);
+    console.log('Database connection on', mongoLink);
     //Create a collection
     db.createCollection('urls', {
         capped: true,

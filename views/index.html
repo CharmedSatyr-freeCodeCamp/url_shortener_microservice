@@ -5,7 +5,10 @@
         <title>Charmed URLs</title>
         <meta charset='utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> </head>
+        <!--The stylesheet is served relative to the path set by express.static-->
+        <link rel='stylesheet' type='text/css' href='/bootstrap.min.css' />
+
+    </head>
 
     <body style='text-align: center'>
         <div class='container-fluid'>
@@ -22,7 +25,7 @@
                     <div class='form-inline'>
                         <div class='form-group'>
                             <input type='text' class='form-control' name='url_entry'></input>
-                            <button type='submit' class='btn btn-primary' onclick="goToURL()">Shorten</button>
+                            <button type='submit' class='btn btn-primary' onclick="goToURL()"><span class="glyphicon glyphicon-scissors"></span>Shorten</button>
                         </div>
                     </div>
                     <br/>
@@ -36,7 +39,7 @@
                     <h3>Shortened URL</h3>
                     <p> <code>https://charmed-urls.herokuapp.com/{{short_url}}</code></p>
                     <br/>
-                    <a href='/'><button type='submit' class='btn btn-success'>Shorten another link</button></a>
+                    <a href='/'><button type='submit' class='btn btn-success'><span class="glyphicon glyphicon-scissors"></span>Shorten another link</button></a>
                 </section>
                 {{/links}} {{#error}}
                 <section>
@@ -44,7 +47,7 @@
                     <div class='form-inline'>
                         <div class='form-group'>
                             <input type='text' class='form-control' name='url_entry'></input>
-                            <button type='submit' class='btn btn-primary' onclick="goToURL()">Shorten</button>
+                            <button type='submit' class='btn btn-primary' onclick="goToURL()"><span class="glyphicon glyphicon-scissors"></span>Shorten</button>
                         </div>
                     </div>
                     <br/>
