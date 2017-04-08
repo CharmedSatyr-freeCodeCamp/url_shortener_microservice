@@ -1,7 +1,7 @@
 # URL Shortener Microservice
 ### "URL Shortener Microservice" is a project required for freeCodeCamp Back End Development Certification: https://www.freecodecamp.com/challenges/url-shortener-microservice
 
-**Date Completed: N/A**
+**Date Completed: April 6, 2017**
 
 See the project on Heroku at: https://charmed-urls.herokuapp.com/
 
