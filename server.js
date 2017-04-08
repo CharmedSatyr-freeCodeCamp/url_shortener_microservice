@@ -150,7 +150,7 @@ mongo.connect(mongoLink, (err, db) => {
         });
     });
 
-    app.listen(port, function() {
+    app.listen(port, () => {
         console.log('Listening on port', port);
     });
 });
