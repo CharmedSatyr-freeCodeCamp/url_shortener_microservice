@@ -7,9 +7,9 @@ const express = require('express'),
     mu = require('mu2'),
     sha256 = require('crypto-js/sha256'),
     validate = require('url-validator'),
-    dotenv = require('dotenv'),
     mongoLink = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener-microservice',
     port = process.env.PORT || 8080;
+require('dotenv').config();
 
 //Dynamic HTML generation and static CSS
 mu.root = path.join(__dirname + '/views');
