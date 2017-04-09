@@ -7,97 +7,99 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <!--The stylesheet is served relative to the path set by express.static-->
         <link rel='stylesheet' type='text/css' href='/bootstrap.min.css' />
+        <link rel='stylesheet' type='text/css' href='/style.min.css' />
     </head>
 
-    <body style='text-align: center;'>
-        <div class='container-fluid'>
+    <body>
+        <div class='container-fluid well'>
             <header class='page-header'>
-                <h2>op.pe <small>a URL Shortener Microservice</small></h2>
+                <h1>op.pe <small>a URL Shortener Microservice</small></h1>
             </header>
-            <main class='container-fluid' style='padding-top: 10px;'> {{#home}}
-                <section class='container-fluid'>
-                    <div class='row'>
-                        <div class='col-lg-4 col-lg-offset-4'>
-                            <h3>Paste a link into the box and click.</h3>
-                            <div class='input-group'>
-                                <input type='text' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
-                                <span class='input-group-btn'>
-                              <button type='button' class='btn btn-primary' onclick="goToURL()">
-                                <span class="glyphicon glyphicon-scissors"></span>Shorten
-                                </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {{/home}} {{#links}}
-                <section class='container-fluid'>
-                    <div class='row'>
-                        <div class='col-lg-6 col-lg-offset-3'>
-                            <div class='panel panel-info'>
-                                <div class='panel-heading'>
-                                    <div class='panel-title'>
-                                        <h3>Original URL</h3>
-                                    </div>
-                                </div>
-                                <div class='panel-body'>
-                                    <h3><code>{{long_url}}</code></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-lg-6 col-lg-offset-3'>
-                            <div class='panel panel-success'>
-                                <div class='panel-heading'>
-                                    <div class='panel-title'>
-                                        <h3>Shortened URL</h3>
-                                    </div>
-                                </div>
-                                <div class='panel-body'>
-                                    <h3><code>op.pe/{{short_url}}</code></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-                    <a href='/ '><button type='submit ' class='btn btn-success '><span class="glyphicon glyphicon-scissors"></span>Shorten another link</button></a>
-                </section>
-                {{/links}} {{#error}}
+        </div>
+
+        <main class='container-fluid'> {{#home}}
+            <section class='container-fluid'>
                 <div class='row'>
                     <div class='col-lg-4 col-lg-offset-4'>
-                        <h3 style='color: #a94442;'>Hmm... It looks like there's a problem.</h3>
-                        <div class='input-group has-error'>
+                        <h3>Paste a link into the box and click.</h3>
+                        <div class='input-group'>
                             <input type='text' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
                             <span class='input-group-btn'>
-                          <button type='button' class='btn btn-primary' onclick="goToURL()">
-                            <span class="glyphicon glyphicon-scissors"></span>Shorten
+                              <button type='button' class='btn btn-primary' onclick="goToURL()">
+                                <span class="glyphicon glyphicon-scissors"></span>Shorten
                             </button>
                             </span>
                         </div>
                     </div>
                 </div>
-                <br/>
+            </section>
+            {{/home}} {{#links}}
+            <section class='container-fluid'>
                 <div class='row'>
-                    <div class=' col-lg-6 col-lg-offset-3 alert alert-danger'>
-                        <p>To save a new address, type the <strong>full</strong> URL you'd like shortened (e.g., <code><strong>https://</strong>www.example.com/</code>) into the input box, and click the button!</p>
-                        <p>A link will appear that redirects to the address you typed.</p>
+                    <div class='col-lg-6 col-lg-offset-3'>
+                        <div class='panel panel-info'>
+                            <div class='panel-heading'>
+                                <div class='panel-title'>
+                                    <h3>Original URL</h3>
+                                </div>
+                            </div>
+                            <div class='panel-body'>
+                                <h3><code>{{long_url}}</code></h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </section> {{/error}}
-            </main>
-            <footer class='container-fluid'>
-                <div class='navbar navbar-default navbar-fixed-bottom'>
-                    <h4><small>source code available on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub</a></h4>
+                <div class='row'>
+                    <div class='col-lg-6 col-lg-offset-3'>
+                        <div class='panel panel-success'>
+                            <div class='panel-heading'>
+                                <div class='panel-title'>
+                                    <h3>Shortened URL</h3>
+                                </div>
+                            </div>
+                            <div class='panel-body'>
+                                <h3><code>op.pe/{{short_url}}</code></h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </footer>
-
-            <script>
-                function goToURL() {
-                    let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
-                    window.location = '/new/' + url_entry;
-                }
-            </script>
+                <br/>
+                <a href='/ '><button type='submit ' class='btn btn-success '><span class="glyphicon glyphicon-scissors"></span>Shorten another link</button></a>
+            </section>
+            {{/links}} {{#error}}
+            <div class='row'>
+                <div class='col-lg-4 col-lg-offset-4'>
+                    <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
+                    <div class='input-group has-error'>
+                        <input type='text' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
+                        <span class='input-group-btn'>
+                          <button type='button' class='btn btn-primary' onclick="goToURL()">
+                            <span class="glyphicon glyphicon-scissors"></span>Shorten
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class='row'>
+                <div class=' col-lg-6 col-lg-offset-3 alert alert-danger'>
+                    <p>To save a new address, type the <strong>full</strong> URL you'd like shortened (e.g., <code><strong>https://</strong>www.example.com/</code>) into the input box, and click the button!</p>
+                    <p>A link will appear that redirects to the address you typed.</p>
+                </div>
+            </div>
+            </section> {{/error}}
+        </main>
+        <footer class='container-fluid'>
+            <div class='navbar navbar-fixed-bottom'>
+                <h3><small>source code available on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub</a></h3>
+            </div>
+        </footer>
+        <script>
+            function goToURL() {
+                let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
+                window.location = '/new/' + url_entry;
+            }
+        </script>
     </body>
 
 </html>
