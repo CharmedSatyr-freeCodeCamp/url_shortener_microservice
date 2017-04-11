@@ -21,15 +21,19 @@
             <section class='container-fluid'>
                 <div class='row'>
                     <div class='col-lg-4 col-lg-offset-4'>
-                        <h3>Paste a link into the box and click.</h3>
-                        <div class='input-group'>
-                            <input type='text' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
-                            <span class='input-group-btn'>
-                              <button type='button' class='btn btn-primary' onclick="goToURL()">
-                                <span class="glyphicon glyphicon-scissors"></span>Shorten
-                            </button>
-                            </span>
-                        </div>
+                        <form class='form-group'>
+                            <label for='default'>
+                              <h3>Paste a link into the box and click.</h3>
+                            </label>
+                            <div class='input-group'>
+                                <input type='text' id='default' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
+                                <span class='input-group-btn'>
+                                  <button type='button' class='btn btn-primary' onclick="goToURL()">
+                                    <span class="glyphicon glyphicon-scissors"></span>Shorten
+                                </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -69,15 +73,19 @@
             {{/links}} {{#error}}
             <div class='row'>
                 <div class='col-lg-4 col-lg-offset-4'>
-                    <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
-                    <div class='input-group has-error'>
-                        <input type='text' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
-                        <span class='input-group-btn'>
+                    <form class='form-group'>
+                        <label for='error'>
+                          <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
+                        </label>
+                        <div class='input-group has-error'>
+                            <input type='text' id='error' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
+                            <span class='input-group-btn'>
                           <button type='button' class='btn btn-primary' onclick="goToURL()">
                             <span class="glyphicon glyphicon-scissors"></span>Shorten
-                        </button>
-                        </span>
-                    </div>
+                            </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
             <br/>
@@ -101,8 +109,5 @@
             }
         </script>
     </body>
-
-</html>
-</body>
 
 </html>
