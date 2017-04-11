@@ -9,7 +9,8 @@
 }
 
 body {
-  background-color: rgba(180, 180, 200, 0.1) !important;
+  background-color: #F7F7F9;
+  background-color: rgba(180, 180, 200, 0.1);
   font-family: 'Londrina Solid', cursive;
   font-size: 150%;
   font-weight: 400;
@@ -21,12 +22,13 @@ h1 {
   font-weight: 700;
 }
 
-small {
+h1 small {
   font-family: 'Londrina Solid', cursive;
 }
 
 .well {
-  background-color: rgba(180, 180, 200, 0.1) !important;
+  background-color: #F0F0F5;
+  background-color: rgba(180, 180, 200, 0.1);
 }
 
 main {
