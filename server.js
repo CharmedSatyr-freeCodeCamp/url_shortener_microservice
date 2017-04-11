@@ -25,7 +25,7 @@ let collection,
     redirect_site;
 
 //A function to update mustache variables and render
-function mupdate(obj, response) {
+const mupdate = (obj, response) => {
     mu.clearCache(); //This is helpful for Development to ensure changes are always reflected, but it hurts speed
     stream = mu.compileAndRender('index.html', obj);
     stream.pipe(response);
