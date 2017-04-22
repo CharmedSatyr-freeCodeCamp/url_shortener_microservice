@@ -38,3 +38,11 @@ main {
 .err-color {
   color: #a94442;
 }
+
+.page-header {
+  padding: 0;
+}
+
+.panel h3 {
+  margin: 2px;
+}
