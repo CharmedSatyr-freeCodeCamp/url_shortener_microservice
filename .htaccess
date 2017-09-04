@@ -1,0 +1,11 @@
+# site redirection
+RewriteEngine on
+
+# always redirect sites to https
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://op.pe/$1 [R,L]
+
+RewriteOptions inherit
+
+# disable directory browsing
+Options ExecCGI Includes IncludesNOEXEC SymLinksIfOwnerMatch -Indexes
