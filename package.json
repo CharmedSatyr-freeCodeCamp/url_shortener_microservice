@@ -11,13 +11,17 @@
     "type": "git",
     "url": "git+https://github.com/charmedsatyr/url_shortener_microservice.git"
   },
+  "engines": {
+    "node": "8.6.0",
+    "npm": "5.5.1"
+  },
   "keywords": [
     "freeCodeCamp",
     "Node.js",
     "Express.js",
     "MongoDB"
   ],
-  "author": "CharmedSatyr",
+  "author": "CharmedSatyr <z@charmed.tech>",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/charmedsatyr/url_shortener_microservice/issues"
