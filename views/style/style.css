@@ -35,19 +35,19 @@
 body {
   background-color: #F7F7F9;
   background-color: rgba(180, 180, 200, 0.1);
-  font-family: 'Londrina Solid', cursive;
+  font-family: 'Londrina Solid', sans-serif;
   font-size: 150%;
   font-weight: 400;
   text-align: center;
 }
 
 h1 {
-  font-family: 'Londrina Outline', cursive;
+  font-family: 'Londrina Outline', sans-serif;
   font-weight: 700;
 }
 
 h1 small {
-  font-family: 'Londrina Solid', cursive;
+  font-family: 'Londrina Solid', sans-serif;
 }
 
 .well {
