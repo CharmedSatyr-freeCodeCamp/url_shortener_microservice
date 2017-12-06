@@ -4,7 +4,8 @@
   "description": "\"URL Shortener Microservice\" is a project required for freeCodeCamp Back End Development Certification.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "gulp": "gulp tasks"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,10 @@
     "url-validator": "^2.0.3"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
     "nodemon": "^1.12.5",
     "prettier": "^1.9.1"
   }

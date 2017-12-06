@@ -6,7 +6,6 @@
         <meta charset='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <!--The stylesheet is served relative to the path set by express.static-->
-        <link rel='stylesheet' type='text/css' href='/bootstrap.min.css' />
         <link rel='stylesheet' type='text/css' href='/style.min.css' />
     </head>
 
@@ -103,11 +102,11 @@
             </div>
         </footer>
         <script>
-            function goToURL() {
-                let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
-                window.location = '/new/' + url_entry;
-            }
-        </script>
+        function goToURL() {
+  let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
+  window.location = '/new/' + url_entry;
+}
+</script>
     </body>
 
 </html>

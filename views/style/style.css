@@ -1,11 +1,35 @@
 @font-face {
   font-family: 'Londrina Outline';
-  src: url('fonts/Londrina_Outline/LondrinaOutline-Regular.ttf');
+  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot');
+  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff2')
+      format('woff2'),
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff')
+      format('woff'),
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.ttf')
+      format('truetype'),
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.svg#LondrinaOutline-Regular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Londrina Solid';
-  src: url('fonts/Londrina_Solid/LondrinaSolid-Regular.ttf');
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot');
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff2')
+      format('woff2'),
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff')
+      format('woff'),
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.ttf')
+      format('truetype'),
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.svg#LondrinaSolid-Regular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
