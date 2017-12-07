@@ -8,9 +8,16 @@ require('dotenv').load();
 var express = require('express');
 var app = express();
 
+/*** DEVELOPMENT TOOLS ***/
+var DEV = process.env.NODE_ENV === 'development';
+var morgan = require('morgan');
+DEV ? app.use(morgan('dev')) : app.use(morgan('tiny'));
+if (DEV) {
+  console.log('Development mode');
+}
+
 /*** MIDDLEWARE ***/
 app.use(express.static(path.join(__dirname, '/views/style')));
-app.use(express.static(path.join(__dirname, '/views/favicon.ico')));
 
 /*** MONGOOSE ***/
 var mongoose = require('mongoose');
