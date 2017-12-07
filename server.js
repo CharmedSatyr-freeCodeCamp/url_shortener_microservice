@@ -19,6 +19,10 @@ if (DEV) {
 /*** MIDDLEWARE ***/
 app.use(express.static(path.join(__dirname, '/views/style')));
 
+//Favicon
+var favicon = require('express-favicon');
+app.use(favicon(path.join(__dirname, '/views/style/favicon.ico')));
+
 /*** MONGOOSE ***/
 var mongoose = require('mongoose');
 var db = mongoose.connection;
