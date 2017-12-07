@@ -49,6 +49,7 @@ function Controllers() {
 
   //Create new
   this.newUrl = function(req, res) {
+    console.log('NEW URL FUNCTION CALLED');
     //Validate the url
     //req.params.url -> https?: and req.params[0] -> //www.example.com, and we need both to make url-validator happy
     var fixed_lnk = validate(req.params.url + req.params[0]);
@@ -99,6 +100,7 @@ function Controllers() {
               .split('')
               .slice(0, 5)
               .join('');
+
             visible = {
               home: false,
               links: true,
@@ -130,6 +132,8 @@ function Controllers() {
   //Visit
   //Visit a new URL
   this.visit = function(req, res) {
+    console.log('VISIT FUNCTION CALLED');
+
     //See if the :url is a short_url
     Url.findOne(
       {
