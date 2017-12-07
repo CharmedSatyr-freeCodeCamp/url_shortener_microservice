@@ -3,7 +3,6 @@
 /*** ENVIRONMENT ***/
 var path = require('path');
 require('dotenv').load();
-var port = process.env.PORT || 8080;
 var DEV = process.env.NODE_ENV === 'development';
 var PROD = process.env.NODE_ENV === 'production';
 
@@ -29,41 +28,26 @@ var mupdate = function(obj, response) {
   stream.pipe(response);
 };
 
+/*** CONTROLLERS ***/
 function Controllers() {
-  /*** VARIABLES ***/
+  //Common variables
   var long_url, short_url; //Values will be both shown and stored to database
   var visible; //Object used as mupdate parameter
 
-  /*** ROOT ***/
+  //Root
   //Display root page using mustache
   this.root = function(req, res) {
-    //Enforce HTTPS in production
-    if (PROD) {
-      if (req.headers['x-forwarded-proto'] !== 'https') {
-        res.redirect(process.env.APP_URL);
-      } else {
-        visible = {
-          home: true,
-          links: false,
-          error: false,
-          long_url: long_url,
-          short_url: short_url
-        };
-        mupdate(visible, res);
-      }
-    } else {
-      visible = {
-        home: true,
-        links: false,
-        error: false,
-        long_url: long_url,
-        short_url: short_url
-      };
-      mupdate(visible, res);
-    }
+    visible = {
+      home: true,
+      links: false,
+      error: false,
+      long_url: long_url,
+      short_url: short_url
+    };
+    mupdate(visible, res);
   };
 
-  /*** CREATE NEW ***/
+  //Create new
   this.newUrl = function(req, res) {
     //Validate the url
     //req.params.url -> https?: and req.params[0] -> //www.example.com, and we need both to make url-validator happy
@@ -143,7 +127,7 @@ function Controllers() {
     }
   };
 
-  /*** VISIT ***/
+  //Visit
   //Visit a new URL
   this.visit = function(req, res) {
     //See if the :url is a short_url
