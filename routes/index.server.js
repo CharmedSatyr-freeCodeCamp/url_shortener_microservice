@@ -16,6 +16,7 @@ module.exports = function(app, db) {
   if (PROD) {
     app.get('*', function(req, res, next) {
       if (req.headers['x-forwarded-proto'] !== 'https') {
+        console.log('Redirecting to', process.env.APP_URL + req.url);
         res.redirect(process.env.APP_URL + req.url);
       } else {
         next(); /* Continue to other routes if we're not redirecting */

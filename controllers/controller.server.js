@@ -49,7 +49,6 @@ function Controllers() {
 
   //Create new
   this.newUrl = function(req, res) {
-    console.log('NEW URL FUNCTION CALLED');
     //Validate the url
     //req.params.url -> https?: and req.params[0] -> //www.example.com, and we need both to make url-validator happy
     var fixed_lnk = validate(req.params.url + req.params[0]);
@@ -75,7 +74,6 @@ function Controllers() {
           if (err) {
             console.error(err);
           }
-          console.log('FINDING ONE URL');
           //If there is a match to something already in the db
           if (matches) {
             //Show the links page without creating a new entry
@@ -92,7 +90,6 @@ function Controllers() {
             mupdate(visible, res);
             //res.json(matches); //If we wanted to just show a JSON object, we'd use this instead of mupdate
           } else {
-            console.log('NO MATCHES I GUESS');
             //If no matches, create a new entry for the database, insert it, and display a links page
             long_url = fixed_lnk;
             //short_url is the first 5 digits of the long_url's sha256 hash
@@ -133,8 +130,6 @@ function Controllers() {
   //Visit
   //Visit a new URL
   this.visit = function(req, res) {
-    console.log('VISIT FUNCTION CALLED');
-
     //See if the :url is a short_url
     Url.findOne(
       {
