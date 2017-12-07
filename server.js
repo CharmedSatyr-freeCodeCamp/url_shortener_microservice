@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
-var mongoLink = process.env.MONGO_URI || 'mongodb://localhost:27017/url-shortener-microservice';
+var mongoLink = process.env.MONGO_URI;
 
 mongoose.connect(
   mongoLink,
