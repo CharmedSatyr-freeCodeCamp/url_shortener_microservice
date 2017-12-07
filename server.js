@@ -10,6 +10,7 @@ var app = express();
 
 /*** MIDDLEWARE ***/
 app.use(express.static(path.join(__dirname, '/views/style')));
+app.use(express.static(path.join(__dirname, '/views/favicon.ico')));
 
 /*** MONGOOSE ***/
 var mongoose = require('mongoose');
