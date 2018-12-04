@@ -1,6 +1,10 @@
 {
+  useTabs: false,
+  tabWidth: 2,
   printWidth: 100,
-  parser: flow,
   singleQuote: true,
-  semi: true
+  semi: true,
+  trailingComma: "es5",
+  jsxBracketSameLine: false,
+  parser: flow,
 }

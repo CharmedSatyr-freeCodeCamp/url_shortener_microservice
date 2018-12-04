@@ -1,17 +1,17 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var autoprefixer = require('gulp-autoprefixer');
-var cleanCSS = require('gulp-clean-css');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
 
-//Move fonts from Bootstrap to views
-gulp.task('copyFonts', function() {
+// Move fonts from Bootstrap to views
+gulp.task('copyFonts', () => {
   return gulp
     .src('./node_modules/bootstrap/dist/fonts/*.{eot,ttf,svg,woff,woff2}')
     .pipe(gulp.dest('views/style/fonts'));
 });
 
-//Combine, autoprefix, clean, and minimize Bootstrap + app CSS
-gulp.task('style', function() {
+// Combine, autoprefix, clean, and minimize Bootstrap + app CSS
+gulp.task('style', () => {
   return gulp
     .src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'views/style/style.css'])
     .pipe(concat('style.min.css'))
@@ -21,9 +21,9 @@ gulp.task('style', function() {
 });
 
 // Build styles
-gulp.task('build', ['copyFonts', 'style']);
+gulp.task('build', gulp.series('copyFonts', 'style'));
 
 // Watch css changes in style folder
-gulp.task('watch', ['style'], function() {
-  gulp.watch('views/style/style.css', ['style']);
+gulp.task('watch', gulp.series('style'), () => {
+  gulp.watch('views/style/style.css', gulp.series('style'));
 });
