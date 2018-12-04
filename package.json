@@ -17,7 +17,12 @@
     "node": "10.6.0",
     "npm": "6.4.1"
   },
-  "keywords": ["freeCodeCamp", "Node.js", "Express.js", "MongoDB"],
+  "keywords": [
+    "freeCodeCamp",
+    "Node.js",
+    "Express.js",
+    "MongoDB"
+  ],
   "author": "CharmedSatyr <z@charmed.tech>",
   "license": "GPL-3.0",
   "bugs": {
