@@ -26,8 +26,8 @@ module.exports = (app, db) => {
   // Website homepage
   app.get('/', controllers.root);
 
-  // Create a new short_url
-  app.get('/new/:url*', controllers.newUrl);
+  // Create a new short url
+  app.post('/new', controllers.postUrl);
 
   // Visit a short_url
   app.get('/:url*', controllers.visit);

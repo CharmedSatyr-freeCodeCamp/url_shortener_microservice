@@ -11,8 +11,8 @@ const Url = require('../models/Url.js');
 
 /*** TOOLS ***/
 const sha256 = require('crypto-js/sha256');
-const validate = require('url-validator');
-const blocklist = require('./blocklist');
+const isURL = require('validator/lib/isURL');
+const blocklist = require('./blocklist.server');
 
 /*** MU - NODE MUSTACHE TEMPLATING ***/
 const mu = require('mu2');
@@ -50,21 +50,23 @@ function Controllers() {
   };
 
   // Create new
-  this.newUrl = (req, res) => {
-    // Validate the url
-    // req.params.url -> https?: and req.params[0] -> //www.example.com, and we need both to make url-validator happy
-    const fixed_lnk = validate(req.params.url + req.params[0]);
+  // Post a new URL
+  this.postUrl = (req, res) => {
+    console.log('BODY:', req.body);
+    const { url_entry } = req.body;
+    console.log('url_entry:', url_entry);
 
-    // If the link is valid, check it against the blocklist
+    const valid = isURL(url_entry);
+
     let blocked;
-    if (fixed_lnk) {
-      blocked = blocklist['0'].map(i => fixed_lnk.includes(i)).filter(j => j === true)[0] || false;
+    if (valid) {
+      blocked = blocklist['0'].map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
       console.log('Blocked:', blocked);
     }
 
-    // If fixed_lnk is NOT valid
-    // Or the link is blocked
-    if (!fixed_lnk || blocked) {
+    // If url_entry is NOT valid
+    // Or the url_entry is blocked
+    if (!valid || blocked) {
       console.error('Invalid entry!');
       //Show an error page
       visible = {
@@ -76,10 +78,10 @@ function Controllers() {
       };
       mupdate(visible, res);
     } else {
-      // Otherwise, search the db to see if we've already got a copy of this link
+      // Otherwise, search the db to see if we've already got a copy of this url_entry
       Url.findOne(
         {
-          long_url: fixed_lnk,
+          long_url: url_entry,
         },
         (err, matches) => {
           if (err) {
@@ -103,9 +105,9 @@ function Controllers() {
             // If we wanted to just show a JSON object, we'd use this instead of mupdate
           } else {
             // If no matches, create a new entry for the database, insert it, and display a links page
-            long_url = fixed_lnk;
+            long_url = url_entry;
             // short_url is the first 5 digits of the long_url's sha256 hash
-            short_url = sha256(fixed_lnk)
+            short_url = sha256(url_entry)
               .toString()
               .split('')
               .slice(0, 5)
@@ -120,8 +122,8 @@ function Controllers() {
             };
 
             const dbEntry = new Url({
-              long_url: long_url,
-              short_url: short_url,
+              long_url,
+              short_url,
             });
 
             dbEntry.save((err, doc) => {

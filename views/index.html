@@ -21,16 +21,16 @@
     <section class='container-fluid'>
       <div class='row'>
         <div class='col-lg-4 col-lg-offset-4'>
-          <form class='form-group'>
+          <form class='form-group' action='/new' method='POST'>
             <label for='default'>
-                              <h3>Paste a link into the box and click.</h3>
-                            </label>
+              <h3>Paste a link into the box and click.</h3>
+            </label>
             <div class='input-group'>
               <input type='text' id='default' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
               <span class='input-group-btn'>
-                                  <button type='button' class='btn btn-primary' onclick="goToURL()">
-                                    <span class="glyphicon glyphicon-scissors"></span>Shorten
-              </button>
+                <button type='submit' class='btn btn-primary'>
+                  <span class="glyphicon glyphicon-scissors"></span>Shorten
+                </button>
               </span>
             </div>
           </form>
@@ -68,21 +68,25 @@
         </div>
       </div>
       <br/>
-      <a href='/ '><button type='submit ' class='btn btn-success '><span class="glyphicon glyphicon-scissors"></span>Shorten another link</button></a>
+      <a href='/'>
+        <button class='btn btn-success'>
+          <span class="glyphicon glyphicon-scissors"></span>Shorten another link
+        </button>
+      </a>
     </section>
     {{/links}} {{#error}}
     <div class='row'>
       <div class='col-lg-4 col-lg-offset-4'>
-        <form class='form-group'>
+        <form class='form-group' action='/new' method='POST'>
           <label for='error'>
-                          <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
-                        </label>
+            <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
+          </label>
           <div class='input-group has-error'>
             <input type='text' id='error' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
             <span class='input-group-btn'>
-                          <button type='button' class='btn btn-primary' onclick="goToURL()">
-                            <span class="glyphicon glyphicon-scissors"></span>Shorten
-            </button>
+              <button type='submit' class='btn btn-primary'>
+                <span class="glyphicon glyphicon-scissors"></span>Shorten
+              </button>
             </span>
           </div>
         </form>
@@ -91,7 +95,7 @@
     <br/>
     <div class='row'>
       <div class=' col-lg-6 col-lg-offset-3 alert alert-danger'>
-        <p>To save a new address, type the <strong>full</strong> URL you'd like shortened (e.g., <code><strong>https://</strong>www.example.com/</code>) into the input box, and click the button!</p>
+        <p>To save a new address, paste the <strong>full</strong> URL you'd like shortened (e.g., <code>https://www.example.com/</code>) into the input box, and click the button!</p>
         <p>A link will appear that redirects to the address you typed.</p>
       </div>
     </div>
@@ -102,12 +106,6 @@
       <h3><small>source code available on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank">GitHub</a></h3>
     </div>
   </footer>
-  <script>
-    function goToURL() {
-      let url_entry = document.querySelectorAll('input[name="url_entry"]')[0].value;
-      window.location = '/new/' + url_entry;
-    }
-  </script>
 </body>
 
 </html>

@@ -19,6 +19,10 @@ if (DEV) {
 /*** MIDDLEWARE ***/
 app.use(express.static(path.join(__dirname, '/views/style')));
 
+// Body Parser
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Favicon
 const favicon = require('express-favicon');
 app.use(favicon(path.join(__dirname, '/views/style/favicon.ico')));
