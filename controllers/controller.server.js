@@ -12,6 +12,7 @@ const Url = require('../models/Url.js');
 /*** TOOLS ***/
 const sha256 = require('crypto-js/sha256');
 const validate = require('url-validator');
+const blocklist = require('./blocklist');
 
 /*** MU - NODE MUSTACHE TEMPLATING ***/
 const mu = require('mu2');
@@ -53,8 +54,17 @@ function Controllers() {
     // Validate the url
     // req.params.url -> https?: and req.params[0] -> //www.example.com, and we need both to make url-validator happy
     const fixed_lnk = validate(req.params.url + req.params[0]);
+
+    // If the link is valid, check it against the blocklist
+    let blocked;
+    if (fixed_lnk) {
+      blocked = blocklist['0'].map(i => fixed_lnk.includes(i)).filter(j => j === true)[0] || false;
+      console.log('Blocked:', blocked);
+    }
+
     // If fixed_lnk is NOT valid
-    if (!fixed_lnk) {
+    // Or the link is blocked
+    if (!fixed_lnk || blocked) {
       console.error('Invalid entry!');
       //Show an error page
       visible = {
