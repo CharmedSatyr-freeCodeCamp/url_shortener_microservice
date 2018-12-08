@@ -1,18 +1,34 @@
 // Add additional blocked strings to the array
 const blocklist = {
   0: [
+    '👍🍓♻🍠🍞🍑9.🍕💩.ws',
+    '81.222.238.42',
     'accountshipfedex.com',
+    'aqq.minetrk.com',
     'autohaus-gratzke.de',
     'aviatur.info',
+    'cascadelaser.com',
     'cinsecurresso.thisistap.com',
     'ddafb.localhornycougars.com',
     'dichvusocks.us',
+    'duma-vologda.ru',
+    'expedie-envoiexpress.com',
+    'fedexecpackage.com',
+    'fedexmyearthmy.com',
+    'findsexydate.com',
+    'gg.gg',
+    'internexus.biz',
+    'mediasrv.de',
+    'myeasygirl.com',
     'now-getshipfedex.com',
+    'op.pe',
     'searchpackfedex.com',
+    't.insigit.com',
     'thebroundcube.com',
+    'thechaiparlour.co.uk',
     'thefinalwoldwind.com',
     'thepartefedex.com',
+    'winkler-sandrini.it',
   ],
 };
-
 module.exports = blocklist;
