@@ -60,7 +60,7 @@ function Controllers() {
 
     let blocked;
     if (valid) {
-      blocked = blocklist['0'].map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
+      blocked = blocklist.map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
       console.log('Blocked:', blocked);
     }
 
