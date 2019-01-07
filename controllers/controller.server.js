@@ -43,6 +43,7 @@ function Controllers() {
       home: true,
       links: false,
       error: false,
+      blocked: false,
       long_url,
       short_url,
     };
@@ -56,27 +57,40 @@ function Controllers() {
     const { url_entry } = req.body;
     console.log('url_entry:', url_entry);
 
-    const valid = isURL(url_entry);
+    // Check that it's a valid URL
+    let valid = isURL(url_entry);
 
     let blocked;
     if (valid) {
       blocked = blocklist.map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
-      console.log('Blocked:', blocked);
     }
 
-    // If url_entry is NOT valid
-    // Or the url_entry is blocked
-    if (!valid || blocked) {
+    if (!valid) {
       console.error('Invalid entry!');
-      //Show an error page
+      //Show a blocked page
       visible = {
         home: false,
         links: false,
         error: true,
+        blocked: false,
         long_url,
         short_url,
       };
       mupdate(visible, res);
+      // If url_entry is blocked
+    } else if (blocked) {
+      console.error('Blocked:', blocked);
+      //Show a blocked page
+      visible = {
+        home: false,
+        links: false,
+        error: false,
+        blocked: true,
+        long_url: url_entry,
+        short_url,
+      };
+      mupdate(visible, res);
+      // If url_entry is NOT valid
     } else {
       // Otherwise, search the db to see if we've already got a copy of this url_entry
       Url.findOne(
@@ -97,6 +111,7 @@ function Controllers() {
               home: false,
               links: true,
               error: false,
+              blocked: false,
               long_url,
               short_url,
             };
@@ -117,6 +132,7 @@ function Controllers() {
               home: false,
               links: true,
               error: false,
+              blocked: false,
               long_url,
               short_url,
             };
@@ -167,6 +183,7 @@ function Controllers() {
             home: false,
             links: false,
             error: true,
+            blocked: false,
             long_url,
             short_url,
           };
