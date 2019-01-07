@@ -1,24 +1,29 @@
 <!doctype html>
 <html lang="en">
 
+<!-- HEAD START -->
 <head>
   <title>op.pe</title>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1'/>
-  <meta name='Description' content='op.pe is a URL Shortener Microservice project for freeCodeCamp.org. Developer: CharmedSatyr. I am available for hire! Visit https://charmed.tech'/>
-  <!--The stylesheet is served relative to the path set by express.static-->
+  <meta name='description' content='op.pe is a URL Shortener Microservice developed by CharmedSatyr. I am available for hire! Visit https://charmed.tech for more information.'/>
+  <!-- The stylesheet is served relative to the path set by express.static -->
   <link rel='stylesheet' type='text/css' href='/style.min.css' />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
 </head>
+<!-- HEAD END -->
 
+<!-- BODY START -->
 <body>
-  <!-- HEADER -->
+  <!-- HEADER START -->
   <div class='container-fluid well'>
     <header class='page-header'>
       <h1>op.pe <small>a URL Shortener Microservice</small></h1>
     </header>
   </div>
+  <!-- HEADER END -->
 
+  <!-- MAIN START -->
   <main class='container-fluid'>
     
     <!-- HOME PAGE START -->
@@ -45,7 +50,7 @@
     {{/home}} 
     <!-- HOME PAGE END -->
     
-    <!-- LINK PAGE START -->
+    <!-- LINKS PAGE START -->
     {{#links}}
     <section class='container-fluid'>
       <div class='row'>
@@ -145,14 +150,19 @@
       </div>
     </section>
     {{/blocked}}
-  </main>
+    <!-- BLOCKED PAGE END -->
 
-  <!-- FOOTER -->
+  </main>
+  <!-- MAIN END -->
+
+  <!-- FOOTER START -->
   <footer class='container-fluid'>
     <div class='navbar navbar-fixed-bottom'>
       <h3><small>source code available on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank" rel='noopener noreferrer'>GitHub</a></h3>
     </div>
   </footer>
+  <!-- FOOTER END -->
 </body>
+<!-- BODY END -->
 
 </html>
