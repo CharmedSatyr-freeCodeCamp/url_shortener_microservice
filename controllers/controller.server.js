@@ -33,8 +33,9 @@ const mupdate = (obj, response) => {
 // Controllers constructor
 function Controllers() {
   // Common variables
-  let long_url, short_url; // Values will be both shown and stored to database
-  let visible; // Object used as mupdate parameter
+  let long_url,
+    short_url, // Values will be both shown and stored to database
+    visible; // Object used as mupdate parameter
 
   // Root
   // Display root page using mustache
@@ -53,18 +54,15 @@ function Controllers() {
   // Create new
   // Post a new URL
   this.postUrl = (req, res) => {
-    console.log('BODY:', req.body);
     const { url_entry } = req.body;
+    console.log('BODY:', req.body);
     console.log('url_entry:', url_entry);
 
     // Check that it's a valid URL
-    let valid = isURL(url_entry);
+    const valid = isURL(url_entry, { require_protocol: true });
+    const blocked = blocklist.map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
 
-    let blocked;
-    if (valid) {
-      blocked = blocklist.map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
-    }
-
+    // If url_entry is NOT valid
     if (!valid) {
       console.error('Invalid entry!');
       //Show a blocked page
@@ -90,7 +88,6 @@ function Controllers() {
         short_url,
       };
       mupdate(visible, res);
-      // If url_entry is NOT valid
     } else {
       // Otherwise, search the db to see if we've already got a copy of this url_entry
       Url.findOne(
