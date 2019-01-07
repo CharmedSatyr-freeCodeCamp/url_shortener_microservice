@@ -25,7 +25,7 @@
     {{#home}}
     <section class='container-fluid'>
       <div class='row'>
-        <div class='col-lg-4 col-lg-offset-4'>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
           <form class='form-group' action='/new' method='POST'>
             <label for='default'>
               <h3>Paste a link into the box and click.</h3>
@@ -49,7 +49,7 @@
     {{#links}}
     <section class='container-fluid'>
       <div class='row'>
-        <div class='col-lg-6 col-lg-offset-3'>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
           <div class='panel panel-info'>
             <div class='panel-heading'>
               <div class='panel-title'>
@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class='row'>
-        <div class='col-lg-6 col-lg-offset-3'>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
           <div class='panel panel-success'>
             <div class='panel-heading'>
               <div class='panel-title'>
@@ -92,7 +92,7 @@
     {{#error}}
     <section class='container-fluid'>
       <div class='row'>
-        <div class='col-lg-4 col-lg-offset-4'>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
           <form class='form-group' action='/new' method='POST'>
             <label for='error'>
               <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
@@ -110,9 +110,11 @@
       </div>
       <br/>
       <div class='row'>
-        <div class=' col-lg-6 col-lg-offset-3 alert alert-danger'>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+          <div class='alert alert-danger'>
           <p>To save a new address, paste the <strong>full</strong> URL you'd like shortened (e.g., <code>https://www.example.com/</code>) into the input box, and click the button!</p>
           <p>A link will appear that redirects to the address you typed.</p>
+          </div>
         </div>
       </div>
     </section> 
@@ -124,10 +126,12 @@
     <section class='container-fluid'>
               <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
       <div class='row'>
-        <div class=' col-lg-6 col-lg-offset-3 alert alert-danger'>
-          <p>The following URL has been blocked due to abuse:</p>
-          <p><code>{{long_url}}</code></p>
-          <p>If you believe there has been an error, please file an issue report <a href='https://github.com/charmedsatyr/url_shortener_microservice/issues' rel='noopener noreferrer' target='_blank'>here</a>.</p>
+        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+          <div class='alert alert-danger'>
+            <p>The following URL has been blocked due to abuse:</p>
+            <p><code>{{long_url}}</code></p>
+            <p>If you believe there has been an error, please file an issue report <a href='https://github.com/charmedsatyr/url_shortener_microservice/issues' rel='noopener noreferrer' target='_blank'>here</a>.</p>
+          </div>
         </div>
       </div>
       <div class='row'>
