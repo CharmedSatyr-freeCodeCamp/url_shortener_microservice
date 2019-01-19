@@ -23,6 +23,7 @@ const local_blocklist = [
   'internexus.biz',
   'khotofedexpaner.com',
   'khotofedexpanercom.webhosting.be',
+  'madal.topgirlshere.com',
   'mediasrv.de',
   'myeasygirl.com',
   'now-getshipfedex.com',
