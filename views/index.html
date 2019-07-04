@@ -24,7 +24,7 @@
     <!-- HEADER START -->
     <header class='border-bottom navbar navbar-light bg-light p-5'>
       <nav class='navbar-brand mx-auto'>
-        <h1>op.pe <small class='text-muted'>a URL Shortener
+        <h1 class='text-dark'>op.pe <small class='text-muted'>a URL Shortener
             Microservice</small>
         </h1>
       </nav>
@@ -42,13 +42,15 @@
           <div class='form-group'>
             <!-- start home page label -->
             <label for='default'>
-              <h3>Paste a link into the box and click.</h3>
+              <h3 class='text-dark'>
+                Paste a link into the box and click.
+              </h3>
             </label>
             <!-- end home page label -->
             <!-- start home page input group -->
             <div class="input-group">
-              <input aria-label="URL input" class="form-control" id='default'
-                placeholder='https://www.example.com' name='url_entry' type="text" />
+              <input aria-describedby="urlInput" aria-label="URL input" class="form-control"
+                id='default' placeholder='https://www.example.com' name='url_entry' type="text" />
               <div class="input-group-append">
                 <button class="btn btn-outline-primary bg-primary text-light" type="submit">
                   Shorten
@@ -56,6 +58,11 @@
               </div>
             </div>
             <!-- end home page input group -->
+            <!-- start home page input help text -->
+            <small id="urlInput" class="form-text text-muted">
+              Make sure to include the full address, including <strong>https://</strong>.
+            </small>
+            <!-- end home page input help text -->
           </div>
         </form>
         <!-- end home page form -->
@@ -72,7 +79,11 @@
             <h3>Original URL</h3>
           </div>
           <div class='card-body mx-auto'>
-            <h3><code>{{long_url}}</code></h3>
+            <h3>
+              <code class='text-dark'>
+                {{long_url}}
+              </code>
+            </h3>
           </div>
         </div>
         <!-- end original url card -->
@@ -83,7 +94,9 @@
           </div>
           <div class='card-body mx-auto'>
             <h3>
-              <code>https://op.pe/{{short_url}}</code>
+              <code class='text-success'>
+                https://op.pe/{{short_url}}
+              </code>
             </h3>
           </div>
         </div>
@@ -126,7 +139,24 @@
         <!-- start error page error message -->
         <div class='alert alert-danger text-center'>
           <p>To save a new address, paste the <strong>full</strong> URL you'd like
-            shortened into the input box, and click the button!</p>
+            shortened into the input box, and click the button.</p>
+          <p>You must include the protocol and TLD. For example, instead of:</p>
+
+          <div class='bg-light'>
+            <h3>
+              <code class='text-danger'>
+                www.example.com
+              </code>
+            </h3>
+          </div>
+          <p>Try:</p>
+          <div class='bg-light'>
+            <h3>
+              <code class='text-success'>
+                https://www.example.com
+              </code>
+            </h3>
+          </div>
           <p>A link will appear that redirects to the address you typed.</p>
         </div>
         <!-- end error page error message -->
@@ -146,7 +176,7 @@
 
           <div class='bg-light text-center'>
             <h3>
-              <code>
+              <code class='text-danger'>
                 {{long_url}}
               </code>
             </h3>
