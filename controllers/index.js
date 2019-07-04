@@ -1,18 +1,16 @@
 'use strict';
 
 /*** ENVIRONMENT ***/
-const path = require('path');
-require('dotenv').load();
 const DEV = process.env.NODE_ENV === 'development';
-const PROD = process.env.NODE_ENV === 'production';
+const path = require('path');
 
 /*** MODEL ***/
-const Url = require('../models/Url.js');
+const Url = require('../models/Url');
 
 /*** TOOLS ***/
 const sha256 = require('crypto-js/sha256');
 const isURL = require('validator/lib/isURL');
-const blocklist = require('./blocklist.server');
+const blocklist = require('./blocklists/');
 
 /*** MU - NODE MUSTACHE TEMPLATING ***/
 const mu = require('mu2');
@@ -55,16 +53,19 @@ function Controllers() {
   // Post a new URL
   this.postUrl = (req, res) => {
     const { url_entry } = req.body;
-    console.log('BODY:', req.body);
-    console.log('url_entry:', url_entry);
-
+    if (DEV) {
+      console.log('BODY:', req.body);
+      console.log('url_entry:', url_entry);
+    }
     // Check that it's a valid URL
     const valid = isURL(url_entry, { require_protocol: true });
     const blocked = blocklist.map(i => url_entry.includes(i)).filter(j => j === true)[0] || false;
 
     // If url_entry is NOT valid
     if (!valid) {
-      console.error('Invalid entry!');
+      if (DEV) {
+        console.error('Invalid entry!');
+      }
       //Show a blocked page
       visible = {
         home: false,
@@ -77,7 +78,9 @@ function Controllers() {
       mupdate(visible, res);
       // If url_entry is blocked
     } else if (blocked) {
-      console.error('Blocked:', blocked);
+      if (DEV) {
+        console.error('Blocked:', blocked);
+      }
       //Show a blocked page
       visible = {
         home: false,
@@ -101,7 +104,9 @@ function Controllers() {
           // If there is a match to something already in the db
           if (matches) {
             // Show the links page without creating a new entry
-            console.log("We've got a duplicate! It's", matches);
+            if (DEV) {
+              console.log('We\'ve got a duplicate! It\'s', matches);
+            }
             long_url = matches.long_url;
             short_url = matches.short_url;
             visible = {
@@ -143,7 +148,7 @@ function Controllers() {
               if (err) {
                 console.error(err);
               }
-              console.log('Inserted', JSON.stringify(dbEntry));
+              console.log('Inserted', JSON.stringify(doc));
             });
 
             mupdate(visible, res);
