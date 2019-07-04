@@ -1,3 +1,5 @@
+/* TODO: Import the rest of the fonts locally
+
 @font-face {
   font-family: 'Londrina Outline';
   src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot');
@@ -31,42 +33,29 @@
   font-weight: normal;
   font-style: normal;
 }
+*/
 
 body {
-  background-color: #F7F7F9;
-  background-color: rgba(180, 180, 200, 0.1);
   font-family: 'Londrina Solid', sans-serif;
-  font-size: 150%;
-  font-weight: 400;
-  text-align: center;
+  font-weight: 300;
 }
 
-h1 {
+header > nav > h1 {
   font-family: 'Londrina Outline', sans-serif;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-h1 small {
+header > nav > h1 > small {
   font-family: 'Londrina Solid', sans-serif;
-}
-
-.well {
-  background-color: #F0F0F5;
-  background-color: rgba(180, 180, 200, 0.1);
-}
-
-main {
-  padding-top: 10px;
+  font-size: 0.5em;
+  font-weight: 400;
 }
 
 .err-color {
-  color: #a94442;
+  color: #721c24;
 }
 
-.page-header {
-  padding: 0;
-}
-
-.panel h3 {
-  margin: 2px;
+/* Bootstrap override */
+.form-control {
+  font-weight: 300;
 }
