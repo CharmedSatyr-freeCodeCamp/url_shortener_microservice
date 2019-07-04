@@ -4,13 +4,6 @@ const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const gulp = require('gulp');
 
-// Move fonts from Bootstrap to views
-gulp.task('copyFonts', () => {
-  return gulp
-    .src('./node_modules/bootstrap/dist/fonts/*.{eot,ttf,svg,woff,woff2}')
-    .pipe(gulp.dest('views/style/fonts'));
-});
-
 // Combine, autoprefix, clean, and minimize Bootstrap + app CSS
 gulp.task('style', () => {
   return gulp
@@ -23,7 +16,7 @@ gulp.task('style', () => {
 });
 
 // Build styles
-gulp.task('build', gulp.series('copyFonts', 'style'));
+gulp.task('build', gulp.series('style'));
 
 // Reload on index.html and style.css changes
 gulp.task('watch', () => {
