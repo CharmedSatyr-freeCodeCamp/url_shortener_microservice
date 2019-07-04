@@ -1,14 +1,13 @@
 'use strict';
 
 /*** ENVIRONMENT ***/
-require('dotenv').load();
 const PROD = process.env.NODE_ENV === 'production';
 
 /*** CONTROLLERS ***/
-const Controllers = require('../controllers/controller.server.js');
+const Controllers = require('../controllers/');
 
 /*** ROUTES ***/
-module.exports = (app, db) => {
+module.exports = app => {
   // Call Controllers constructor
   const controllers = new Controllers();
 
@@ -23,12 +22,9 @@ module.exports = (app, db) => {
       }
     });
   }
-  // Website homepage
-  app.get('/', controllers.root);
 
-  // Create a new short url
-  app.post('/new', controllers.postUrl);
-
-  // Visit a short_url
-  app.get('/:url*', controllers.visit);
+  app
+    .get('/', controllers.root) // Website homepage
+    .post('/new', controllers.postUrl) // Create a new short url
+    .get('/:url*', controllers.visit); // Visit a short_url
 };

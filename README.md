@@ -1,4 +1,7 @@
 # URL Shortener Microservice
+
+[![Build Status](https://travis-ci.com/CharmedSatyr-freeCodeCamp/url_shortener_microservice.svg?branch=master)](https://travis-ci.com/CharmedSatyr-freeCodeCamp/url_shortener_microservice)
+
 ### "URL Shortener Microservice" is a project required for freeCodeCamp Back End Development Certification: https://www.freecodecamp.com/challenges/url-shortener-microservice
 
 ***
