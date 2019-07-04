@@ -1,45 +1,56 @@
-/* TODO: Import the rest of the fonts locally
-
+/* Londrina Outline - Regular */
 @font-face {
   font-family: 'Londrina Outline';
-  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot');
-  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff2')
-      format('woff2'),
-    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff')
-      format('woff'),
-    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.ttf')
-      format('truetype'),
-    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.svg#LondrinaOutline-Regular')
-      format('svg');
-  font-weight: normal;
+  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Londrina_Outline/LondrinaOutline-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.otf') format('opentype'), /* Open Type Font */
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.svg') format('svg'), /* Legacy iOS */
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Londrina_Outline/LondrinaOutline-Regular.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: normal; /* regular */
   font-style: normal;
 }
 
+/* Londrina Solid - Regular */
 @font-face {
   font-family: 'Londrina Solid';
-  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot');
-  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot?#iefix')
-      format('embedded-opentype'),
-    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff2')
-      format('woff2'),
-    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff')
-      format('woff'),
-    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.ttf')
-      format('truetype'),
-    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.svg#LondrinaSolid-Regular')
-      format('svg');
-  font-weight: normal;
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.otf') format('opentype'), /* Open Type Font */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.svg') format('svg'), /* Legacy iOS */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Regular.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: 400; /* normal, regular */
   font-style: normal;
 }
-*/
 
+/* Londrina Solid - Light */
+@font-face {
+  font-family: 'Londrina Solid';
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Light.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Londrina_Solid/LondrinaSolid-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Light.otf') format('opentype'), /* Open Type Font */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Light.svg') format('svg'), /* Legacy iOS */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Light.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Londrina_Solid/LondrinaSolid-Light.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: 300; /* light */
+  font-style: normal;
+}
+
+/* Global */
 body {
   font-family: 'Londrina Solid', sans-serif;
   font-weight: 300;
 }
 
+.err-color {
+  color: #721c24;
+}
+
+/* Specific */
 header > nav > h1 {
   font-family: 'Londrina Outline', sans-serif;
   font-weight: bold;
@@ -49,10 +60,6 @@ header > nav > h1 > small {
   font-family: 'Londrina Solid', sans-serif;
   font-size: 0.5em;
   font-weight: 400;
-}
-
-.err-color {
-  color: #721c24;
 }
 
 /* Bootstrap override */
