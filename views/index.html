@@ -1,168 +1,219 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang='en-US'>
 
-<!-- HEAD START -->
-<head>
-  <title>op.pe</title>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1'/>
-  <meta name='description' content='op.pe is a URL Shortener Microservice developed by CharmedSatyr. I am available for hire! Visit https://charmed.tech for more information.'/>
-  <!-- The stylesheet is served relative to the path set by express.static -->
-  <link rel='stylesheet' type='text/css' href='/style.min.css' />
-  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-</head>
-<!-- HEAD END -->
+  <!-- HEAD START -->
 
-<!-- BODY START -->
-<body>
-  <!-- HEADER START -->
-  <div class='container-fluid well'>
-    <header class='page-header'>
-      <h1>op.pe <small>a URL Shortener Microservice</small></h1>
+  <head>
+    <title>op.pe</title>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='description'
+      content='op.pe is a URL Shortener Microservice developed by CharmedSatyr. I am available for hire! Visit https://charmed.tech for more information.' />
+    <!-- The stylesheet is served relative to the path set by express.static -->
+    <link rel='stylesheet' type='text/css' href='/style.min.css' />
+    <link
+      href="https://fonts.googleapis.com/css?family=Londrina+Outline|Londrina+Solid:300,400&display=swap"
+      rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  </head>
+  <!-- HEAD END -->
+
+  <!-- BODY START -->
+
+  <body>
+    <!-- HEADER START -->
+    <header class='border-bottom navbar navbar-light bg-light p-5'>
+      <nav class='navbar-brand mx-auto'>
+        <h1 class='text-dark'>op.pe <small class='text-muted'>a URL Shortener
+            Microservice</small>
+        </h1>
+      </nav>
     </header>
-  </div>
-  <!-- HEADER END -->
+    <!-- HEADER END -->
 
-  <!-- MAIN START -->
-  <main class='container-fluid'>
-    
-    <!-- HOME PAGE START -->
-    {{#home}}
-    <section class='container-fluid'>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <form class='form-group' action='/new' method='POST'>
+    <!-- MAIN START -->
+    <main class='container'>
+
+      <!-- HOME PAGE START -->
+      {{#home}}
+      <section class='container-fluid mt-5 mx-md-5 mx-sm-0'>
+        <!-- start home page form -->
+        <form action='/new' method='POST'>
+          <div class='form-group'>
+            <!-- start home page label -->
             <label for='default'>
-              <h3>Paste a link into the box and click.</h3>
+              <h3 class='text-dark'>
+                Paste a link into the box and click.
+              </h3>
             </label>
-            <div class='input-group'>
-              <input type='text' id='default' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
-              <span class='input-group-btn'>
-                <button type='submit' class='btn btn-primary'>
-                  <span class="glyphicon glyphicon-scissors"></span>Shorten
+            <!-- end home page label -->
+            <!-- start home page input group -->
+            <div class="input-group">
+              <input aria-describedby="urlInput" aria-label="URL input" class="form-control"
+                id='default' placeholder='https://www.example.com' name='url_entry' type="text" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary bg-primary text-light" type="submit">
+                  Shorten
                 </button>
-              </span>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-    {{/home}} 
-    <!-- HOME PAGE END -->
-    
-    <!-- LINKS PAGE START -->
-    {{#links}}
-    <section class='container-fluid'>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <div class='panel panel-info'>
-            <div class='panel-heading'>
-              <div class='panel-title'>
-                <h3>Original URL</h3>
               </div>
             </div>
-            <div class='panel-body'>
-              <h3><code>{{long_url}}</code></h3>
-            </div>
+            <!-- end home page input group -->
+            <!-- start home page input help text -->
+            <small id="urlInput" class="form-text text-muted">
+              Make sure to include the full address, including <strong>https://</strong>.
+            </small>
+            <!-- end home page input help text -->
+          </div>
+        </form>
+        <!-- end home page form -->
+      </section>
+      {{/home}}
+      <!-- HOME PAGE END -->
+
+      <!-- LINKS PAGE START -->
+      {{#links}}
+      <section class='container-fluid mt-5 mx-md-5 mx-sm-0'>
+        <!-- start original url card -->
+        <div class='card my-3'>
+          <div class='card-header alert alert-info'>
+            <h3>Original URL</h3>
+          </div>
+          <div class='card-body mx-auto'>
+            <h3>
+              <code class='text-dark'>
+                {{long_url}}
+              </code>
+            </h3>
           </div>
         </div>
-      </div>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <div class='panel panel-success'>
-            <div class='panel-heading'>
-              <div class='panel-title'>
-                <h3>Shortened URL</h3>
-              </div>
-            </div>
-            <div class='panel-body'>
-              <h3><code>https://op.pe/{{short_url}}</code></h3>
-            </div>
+        <!-- end original url card -->
+        <!-- start shortened url card -->
+        <div class='card my-3'>
+          <div class='card-header alert alert-success'>
+            <h3>Shortened URL</h3>
+          </div>
+          <div class='card-body mx-auto'>
+            <h3>
+              <code class='text-success'>
+                https://op.pe/{{short_url}}
+              </code>
+            </h3>
           </div>
         </div>
-      </div>
-      <br/>
-      <span class='input-group-btn'>
-        <a href='/'>
-          <button class='btn btn-success'>
-            <span class="glyphicon glyphicon-scissors"></span>Shorten another link
-          </button>
+        <!-- end original url card -->
+        <!-- start shorten link button -->
+        <a href='/' class='btn-lg btn-success btn-block text-center' role='button'>
+          Shorten another link
         </a>
-      </span>
-    </section>
-    {{/links}}
-    <!-- LINKS PAGE END -->
-    
-    <!-- ERROR PAGE START -->
-    {{#error}}
-    <section class='container-fluid'>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <form class='form-group' action='/new' method='POST'>
+        <!-- end shorten link button -->
+      </section>
+      {{/links}}
+      <!-- LINKS PAGE END -->
+
+      <!-- ERROR PAGE START -->
+      {{#error}}
+      <section class=' container-fluid mt-5 mx-md-5 mx-sm-0'>
+        <!-- start error page form -->
+        <form action='/new' method='POST'>
+          <!-- start error page form group -->
+          <div class='form-group'>
+            <!-- start error page label -->
             <label for='error'>
               <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
             </label>
-            <div class='input-group has-error'>
-              <input type='text' id='error' class='form-control' placeholder='https://www.example.com/' name='url_entry'></input>
-              <span class='input-group-btn'>
-                <button type='submit' class='btn btn-primary'>
-                  <span class="glyphicon glyphicon-scissors"></span>Shorten
-                </button>
-              </span>
+            <!-- end error page label -->
+            <!-- start error page input group -->
+            <div class="input-group">
+              <input aria-label="URL input" class="form-control is-invalid" id='error'
+                placeholder='https://www.example.com' name='url_entry' required type="text" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary bg-primary text-light"
+                  type="submit">Shorten</button>
+              </div>
             </div>
-          </form>
-        </div>
-      </div>
-      <br/>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <div class='alert alert-danger'>
-          <p>To save a new address, paste the <strong>full</strong> URL you'd like shortened (e.g., <code>https://www.example.com/</code>) into the input box, and click the button!</p>
+            <!-- end error page input group -->
+          </div>
+          <!-- end error page form group -->
+        </form>
+        <!-- end error page form -->
+        <!-- start error page error message -->
+        <div class='alert alert-danger text-center'>
+          <p>To save a new address, paste the <strong>full</strong> URL you'd like
+            shortened into the input box, and click the button.</p>
+          <p>You must include the protocol and TLD. For example, instead of:</p>
+
+          <div class='bg-light'>
+            <h3>
+              <code class='text-danger'>
+                www.example.com
+              </code>
+            </h3>
+          </div>
+          <p>Try:</p>
+          <div class='bg-light'>
+            <h3>
+              <code class='text-success'>
+                https://www.example.com
+              </code>
+            </h3>
+          </div>
           <p>A link will appear that redirects to the address you typed.</p>
+        </div>
+        <!-- end error page error message -->
+      </section>
+      {{/error}}
+      <!-- ERROR PAGE END -->
+
+      <!-- BLOCKED PAGE START -->
+      {{#blocked}}
+      <section class='container-fluid mt-5 mx-md-5 mx-sm-0'>
+        <!-- start blocked page label -->
+        <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
+        <!-- end blocked page label -->
+        <!-- start blocked page message -->
+        <div class='alert alert-danger'>
+          <p>The following URL has been blocked due to abuse:</p>
+
+          <div class='bg-light text-center'>
+            <h3>
+              <code class='text-danger'>
+                {{long_url}}
+              </code>
+            </h3>
           </div>
-        </div>
-      </div>
-    </section> 
-    {{/error}}
-    <!-- ERROR PAGE END -->
 
-    <!-- BLOCKED PAGE START -->
-    {{#blocked}}
-    <section class='container-fluid'>
-              <h3 class='err-color'>Hmm... It looks like there's a problem.</h3>
-      <div class='row'>
-        <div class='col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
-          <div class='alert alert-danger'>
-            <p>The following URL has been blocked due to abuse:</p>
-            <p><code>{{long_url}}</code></p>
-            <p>If you believe there has been an error, please file an issue report <a href='https://github.com/charmedsatyr/url_shortener_microservice/issues' rel='noopener noreferrer' target='_blank'>here</a>.</p>
-          </div>
+          <p>If you believe there has been an error, please file an issue report <a
+              href='https://github.com/charmedsatyr-freecodecamp/url_shortener_microservice/issues'
+              rel='noopener noreferrer' target='_blank'>here</a>.
+          </p>
         </div>
-      </div>
-      <div class='row'>
-        <div class='col-lg-4 col-lg-offset-4'>
-          <a href='/'>
-            <button class='btn btn-primary'>
-              <span class="glyphicon glyphicon-scissors"></span>Shorten another link
-            </button>
-          </a>
-        </div>
-      </div>
-    </section>
-    {{/blocked}}
-    <!-- BLOCKED PAGE END -->
+        <!-- end blocked page message -->
+        <!-- start blocked page button -->
+        <a href='/' class='btn-lg btn-secondary btn-block text-center' role='button'>
+          Shorten a different link?
+        </a>
+        <!-- end blocked page button -->
+      </section>
+      {{/blocked}}
+      <!-- BLOCKED PAGE END -->
 
-  </main>
-  <!-- MAIN END -->
+    </main>
+    <!-- MAIN END -->
 
-  <!-- FOOTER START -->
-  <footer class='container-fluid'>
-    <div class='navbar navbar-fixed-bottom'>
-      <h3><small>source code available on&#32;<a href="https://github.com/charmedsatyr/url_shortener_microservice.git" target="_blank" rel='noopener noreferrer'>GitHub</a></h3>
-    </div>
-  </footer>
-  <!-- FOOTER END -->
-</body>
-<!-- BODY END -->
+    <!-- FOOTER START -->
+    <footer class='navbar fixed-bottom p-3'>
+      <nav class='mx-auto text-muted'>
+        source code available on&nbsp;<a
+          href='https://github.com/charmedsatyr-freecodecamp/url_shortener_microservice.git'
+          target='_blank' rel='noopener noreferrer'>GitHub</a>
+      </nav>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script id='__bs_script__'>//<![CDATA[
+      document.write('<script async src="http://HOST:3001/browser-sync/browser-sync-client.js?v=2.26.7"><\/script>'.replace('HOST', location.hostname));
+  //]]></script>
+  </body>
+  <!-- BODY END -->
 
 </html>
